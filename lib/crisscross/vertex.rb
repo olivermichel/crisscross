@@ -1,4 +1,4 @@
-module RGraph
+module Crisscross
   ##
   # provides standard operations for a vertex
   module Vertex

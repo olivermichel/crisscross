@@ -1,12 +1,12 @@
-require 'rgraph/graph'
-require 'rgraph/vertex'
-require 'rgraph/edge'
+require 'crisscross/graph'
+require 'crisscross/vertex'
+require 'crisscross/edge'
 
-describe RGraph::Graph do
-  let(:graph) { RGraph::Graph.new }
+describe Crisscross::Graph do
+  let(:graph) { Crisscross::Graph.new }
 
   describe '#initialize' do
-    let(:empty_graph) { RGraph::Graph.new }
+    let(:empty_graph) { Crisscross::Graph.new }
 
     it 'is empty upon creation' do
       expect(empty_graph.vertices).to be_empty
@@ -15,8 +15,7 @@ describe RGraph::Graph do
   end
 
   describe '#add_vertex' do
-    let(:v) { Object.new.extend(RGraph::Vertex) }
-    let(:w) { Object.new }
+    let(:v) { Object.new.extend(Crisscross::Vertex) }
 
     it 'adds a vertex to the graph' do
       graph.add_vertex(v)
@@ -30,7 +29,7 @@ describe RGraph::Graph do
   end
 
   describe '#remove_vertex' do
-    let(:v) { Vertex.new }
+    let(:v) { Object.new.extend(Crisscross::Vertex) }
 
     it 'removes a vertex from the graph' do
       graph.add_vertex v
@@ -44,21 +43,21 @@ describe RGraph::Graph do
   end
 
   describe '#add_edge' do
-    let(:a) { Vertex.new }
-    let(:b) { Vertex.new }
-    let(:e) { Edge.new }
+    let(:a) { Object.new.extend(Crisscross::Vertex) }
+    let(:b) { Object.new.extend(Crisscross::Vertex) }
+    let(:e) { Object.new.extend(Crisscross::Edge) }
 
     it 'adds an edge to the graph' do
-      graph.add_vertex a
-      graph.add_vertex b
-      graph.add_edge a, b, e
+      graph.add_vertex(a)
+      graph.add_vertex(b)
+      graph.add_edge(a, b, e)
       expect(graph.edges).to include(e)
     end
 
     it 'raises an error when adding an already existing edge' do
-      graph.add_vertex a
-      graph.add_vertex b
-      graph.add_edge a, b, e
+      graph.add_vertex(a)
+      graph.add_vertex(b)
+      graph.add_edge(a, b, e)
       expect { graph.add_edge a, b, e }.to raise_error
     end
 
@@ -69,11 +68,11 @@ describe RGraph::Graph do
   end
 
   describe '#remove_edge_between_vertices' do
-    let(:a) { Vertex.new }
-    let(:b) { Vertex.new }
-    let(:c) { Vertex.new }
-    let(:d) { Vertex.new }
-    let(:e) { Edge.new }  
+    let(:a) { Object.new.extend(Crisscross::Vertex) }
+    let(:b) { Object.new.extend(Crisscross::Vertex) }
+    let(:c) { Object.new.extend(Crisscross::Vertex) }
+    let(:d) { Object.new.extend(Crisscross::Vertex) }
+    let(:e) { Object.new.extend(Crisscross::Edge) }
 
     before do
       graph.add_vertex a
@@ -94,10 +93,10 @@ describe RGraph::Graph do
   end
 
   describe '#remove_edge' do
-    let(:a) { Vertex.new }
-    let(:b) { Vertex.new }
-    let(:e) { Edge.new }
-    let(:f) { Edge.new }
+    let(:a) { Object.new.extend(Crisscross::Vertex) }
+    let(:b) { Object.new.extend(Crisscross::Vertex) }
+    let(:e) { Object.new.extend(Crisscross::Edge) }
+    let(:f) { Object.new.extend(Crisscross::Edge) }
 
     before do
       graph.add_vertex a

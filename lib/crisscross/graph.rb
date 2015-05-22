@@ -1,4 +1,4 @@
-module RGraph
+module Crisscross
   # represents an undirected graph
   class Graph
     def initialize
@@ -36,7 +36,7 @@ module RGraph
     end
 
     def remove_edge_between_vertices(a, b)
-      unless @g.key?(a) && @g.key?(b) && @g[a][b] == @g[b][a]
+      unless @g.key?(a) && @g.key?(b)
         fail 'there is no edge between the specified vertices'
       end
 
@@ -51,31 +51,3 @@ module RGraph
     end
   end
 end
-
-  class Vertex
-    attr_accessor :g
-
-    def initialize
-      @g = nil
-    end
-
-    def neighbors
-      @g.g[self].keys
-    end
-  end
-
-  class Edge
-    attr_accessor :g, :a, :b
-
-    def initialize
-      @g = nil
-      @a = nil
-      @b = nil
-    end
-  end
-
-  class Link < Edge
-  end
-
-  class Node < Vertex
-  end

@@ -1,7 +1,7 @@
-require 'rgraph/edge'
+require 'crisscross/edge'
 
-describe RGraph::Edge do
-  let(:edge) { Object.new.extend(RGraph::Edge) }
+describe Crisscross::Edge do
+  let(:edge) { Object.new.extend(Crisscross::Edge) }
 
   describe '#name=' do
     it 'assigns a name to the edge' do

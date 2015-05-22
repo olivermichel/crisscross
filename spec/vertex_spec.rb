@@ -1,7 +1,7 @@
-require 'rgraph/vertex'
+require 'crisscross/vertex'
 
-describe RGraph::Vertex do
-  let(:vertex) { Object.new.extend(RGraph::Vertex) }
+describe Crisscross::Vertex do
+  let(:vertex) { Object.new.extend(Crisscross::Vertex) }
 
   describe '#name=' do
     it 'assigns a name to the vertex' do
@@ -11,7 +11,7 @@ describe RGraph::Vertex do
   end
 
   describe '#add_neighbor' do
-    let(:n) { Object.new.extend(RGraph::Vertex) }
+    let(:n) { Object.new.extend(Crisscross::Vertex) }
 
     it 'adds a neighbor to the vertex' do
       vertex.add_neighbor(n)
@@ -25,8 +25,8 @@ describe RGraph::Vertex do
   end
 
   describe '#remove_neighbor' do
-    let(:n) { Object.new.extend(RGraph::Vertex) }
-    let(:m) { Object.new.extend(RGraph::Vertex) }
+    let(:n) { Object.new.extend(Crisscross::Vertex) }
+    let(:m) { Object.new.extend(Crisscross::Vertex) }
     before { vertex.add_neighbor(n) }
     it 'removes a neighbor' do
       vertex.remove_neighbor(n)
