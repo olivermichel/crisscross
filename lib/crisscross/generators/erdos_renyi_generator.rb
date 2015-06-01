@@ -7,13 +7,12 @@ module Crisscross
       DEFAULT_PARAMS = { n: 10, p: 0.5 }
 
       def generate
-        g = Crisscross::Graph.new
         @params[:n].times { g.add_vertex(@v_class.new) }
 
-        g.each_vertex_pair do |v, w|
-          g.add_edge(v, w, @e_class.new) if rand <= @params[:p]
+        @g.each_vertex_pair do |v, w|
+          @g.add_edge(v, w, @e_class.new) if rand <= @params[:p]
         end
-        g
+        @g
       end
     end
   end
