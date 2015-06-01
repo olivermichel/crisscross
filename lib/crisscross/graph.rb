@@ -14,6 +14,14 @@ module Crisscross
       @g.keys
     end
 
+    def n
+      @g.keys.length
+    end
+
+    def m
+      @e.length
+    end
+
     def add_vertex(v)
       fail 'vertex already exists' if @g.key? v
       @g[v] = {}

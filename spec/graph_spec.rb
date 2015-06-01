@@ -11,6 +11,40 @@ describe Crisscross::Graph do
     it 'is empty upon creation' do
       expect(empty_graph.vertices).to be_empty
       expect(empty_graph.edges).to be_empty
+      expect(empty_graph.n).to eq(0)
+      expect(empty_graph.m).to eq(0)
+    end
+  end
+
+  describe '#n' do
+    let(:a) { Object.new.extend(Crisscross::Vertex) }
+    let(:b) { Object.new.extend(Crisscross::Vertex) }
+    let(:e) { Object.new.extend(Crisscross::Edge) }
+    
+    before do
+      graph.add_vertex a
+      graph.add_vertex b
+      graph.add_edge a, b, e
+    end
+
+    it 'returns the number of vertices in the graph' do
+      expect(graph.n).to eq(2)
+    end
+  end
+
+  describe '#m' do
+    let(:a) { Object.new.extend(Crisscross::Vertex) }
+    let(:b) { Object.new.extend(Crisscross::Vertex) }
+    let(:e) { Object.new.extend(Crisscross::Edge) }
+    
+    before do
+      graph.add_vertex a
+      graph.add_vertex b
+      graph.add_edge a, b, e
+    end
+    
+    it 'returns the number of edges in the graph' do
+      expect(graph.m).to eq(1)
     end
   end
 
