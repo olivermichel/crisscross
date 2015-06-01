@@ -20,7 +20,6 @@ describe Crisscross::Graph do
     let(:a) { Object.new.extend(Crisscross::Vertex) }
     let(:b) { Object.new.extend(Crisscross::Vertex) }
     let(:e) { Object.new.extend(Crisscross::Edge) }
-    
     before do
       graph.add_vertex a
       graph.add_vertex b
@@ -36,13 +35,12 @@ describe Crisscross::Graph do
     let(:a) { Object.new.extend(Crisscross::Vertex) }
     let(:b) { Object.new.extend(Crisscross::Vertex) }
     let(:e) { Object.new.extend(Crisscross::Edge) }
-    
     before do
       graph.add_vertex a
       graph.add_vertex b
       graph.add_edge a, b, e
     end
-    
+
     it 'returns the number of edges in the graph' do
       expect(graph.m).to eq(1)
     end
@@ -145,6 +143,29 @@ describe Crisscross::Graph do
 
     it 'raises an error when removing an non existing edge' do
       expect { graph.remove_edge f }.to raise_error
+    end
+  end
+
+  describe '#each_vertex_pair' do
+    let(:a) { Object.new.extend(Crisscross::Vertex) }
+    let(:b) { Object.new.extend(Crisscross::Vertex) }
+    let(:c) { Object.new.extend(Crisscross::Vertex) }
+    # let(:pairs) { ([a,b], [a,c], [b,c]) }
+
+    before do
+      graph.add_vertex a
+      graph.add_vertex b
+      graph.add_vertex c
+    end
+
+    it 'yields a block' do
+      expect { |b| graph.each_vertex_pair(&b) }.to yield_control
+    end
+
+    it 'yields all unique unordered pairs of vertices' do
+      expect do |b|
+        graph.each_vertex_pair(&b)
+      end .to yield_successive_args([a, b], [a, c], [b, c])
     end
   end
 end

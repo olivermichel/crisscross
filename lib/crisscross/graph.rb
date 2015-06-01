@@ -57,5 +57,13 @@ module Crisscross
     def remove_edge(e)
       remove_edge_between_vertices e.a, e.b
     end
+
+    def each_vertex_pair(&b)
+      (0..n - 1).each do |i|
+        (i + 1..n - 1).each do |j|
+          b.call(vertices[i], vertices[j])
+        end
+      end
+    end
   end
 end
