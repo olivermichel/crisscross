@@ -1,6 +1,6 @@
 module Crisscross
   module Generators
-    # generates random graphs using the Erdos-Renyi G(n,p) random graph model
+    # generates random K-ary tree graphs
     class KaryTreeGenerator < Generator
       DEFAULT_PARAMS = { k: 3, h: 3 }
 
