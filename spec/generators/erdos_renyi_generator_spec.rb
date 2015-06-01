@@ -19,13 +19,15 @@ describe Crisscross::Generators::ErdosRenyiGenerator do
   let(:v_class) { TestVertex }
   let(:e_class) { TestEdge }
   let(:gen) do
-    Crisscross::Generators::ErdosRenyiGenerator.new(n, p, v_class, e_class)
+    Crisscross::Generators::ErdosRenyiGenerator.new(
+      v_class, e_class, n: n, p: p
+    )
   end
 
   describe '#initialize' do
     it 'assigns the constructor parameters' do
-      expect(gen.n).to eq n
-      expect(gen.p).to eq p
+      expect(gen.params[:n]).to eq n
+      expect(gen.params[:p]).to eq p
       expect(gen.v_class).to eq v_class
       expect(gen.e_class).to eq e_class
     end
