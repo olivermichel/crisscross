@@ -12,7 +12,10 @@ Gem::Specification.new do |g|
       'lib/crisscross/graph.rb',
       'lib/crisscross/vertex.rb',
       'lib/crisscross/edge.rb',
-      'lib/crisscross/attributes.rb'
+      'lib/crisscross/attributes.rb',
+      'lib/crisscross/generators/generator.rb',
+      'lib/crisscross/generators/erdos_renyi_generator.rb',
+      'lib/crisscross/generators/erdos_renyi_generator.rb'
     ]
   g.test_files    =
     [
@@ -20,7 +23,9 @@ Gem::Specification.new do |g|
       'spec/edge_spec.rb',
       'spec/graph_spec.rb',
       'spec/vertex_spec.rb',
-      'spec/spec_helper.rb'
+      'spec/spec_helper.rb',
+      'spec/erdos_renyi_generator_spec.rb',
+      'spec/erdos_renyi_generator_spec.rb'
     ]
   g.homepage      = 'http://ngn.cg.colorado.edu/~oliver'
   g.license       = 'MIT'
