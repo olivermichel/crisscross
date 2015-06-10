@@ -26,5 +26,21 @@ module Crisscross
       fail 'neighbor does not exist' unless @neighbors.include?(v)
       @neighbors.delete(v)
     end
+
+    def carried_edges
+      @c ||= []
+    end
+
+    def carry_edge(e)
+      @c ||= []
+      fail 'object is already mapped' if @c.include?(e)
+      @c << e
+    end
+
+    def uncarry_edge(e)
+      @c ||= []
+      fail 'object is not mapped' unless @c.include?(e)
+      @c.delete(e)
+    end
   end
 end

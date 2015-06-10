@@ -9,11 +9,12 @@ Gem::Specification.new do |g|
   g.require_paths = ['lib']
   g.files         =
     [
+      'lib/crisscross.rb',
       'lib/crisscross/graph.rb',
       'lib/crisscross/vertex.rb',
       'lib/crisscross/edge.rb',
       'lib/crisscross/attributes.rb',
-      'lib/crisscross/mapable.rb'
+      'lib/crisscross/mapable.rb',
       'lib/crisscross/generators/generator.rb',
       'lib/crisscross/generators/erdos_renyi_generator.rb',
       'lib/crisscross/generators/erdos_renyi_generator.rb'

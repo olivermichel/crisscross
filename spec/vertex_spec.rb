@@ -81,4 +81,34 @@ describe Crisscross::Vertex do
       expect { vertex.unmap(m) }.to raise_error
     end
   end
+
+  describe '#carry_edge' do
+    let(:n) { Object.new.extend(Crisscross::Edge) }
+    let(:m) { Object.new.extend(Crisscross::Edge) }
+    before { vertex.carry_edge(n) }
+
+    it 'maps an edge onto a vertex' do
+      vertex.carry_edge(m)
+      expect(vertex.carried_edges).to include(m)
+    end
+
+    it 'raises an error when the specified edge is alread mapped' do
+      expect { vertex.carry_edge(n) }.to raise_error
+    end
+  end
+
+  describe '#uncarry_edge' do
+    let(:n) { Object.new.extend(Crisscross::Edge) }
+    let(:m) { Object.new.extend(Crisscross::Edge) }
+    before { vertex.carry_edge(n) }
+
+    it 'unmaps an edge' do
+      vertex.uncarry_edge(n)
+      expect(vertex.carried_edges).to_not include(n)
+    end
+
+    it 'raises an error when unmapping a not mapped edge' do
+      expect { vertex.uncarry_edge(m) }.to raise_error
+    end
+  end
 end

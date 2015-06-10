@@ -2,7 +2,6 @@ module Crisscross
   ##
   # provides methods to add and remove sub objects
   module Mapable
-
     def map(s)
       @s ||= []
       fail 'object is already mapped' if @s.include?(s)

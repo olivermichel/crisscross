@@ -1,4 +1,5 @@
 require 'crisscross/attributes'
+require 'crisscross/mapable.rb'
 require 'crisscross/graph'
 require 'crisscross/edge'
 require 'crisscross/vertex'
