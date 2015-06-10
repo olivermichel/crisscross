@@ -1,8 +1,15 @@
+require_relative 'mapable'
+
 module Crisscross
   ##
   # provides standard operations for a vertex
   module Vertex
+    include Mapable
     attr_accessor :name
+
+    def sub_vertices
+      sub
+    end
 
     def neighbors
       @neighbors ||= []

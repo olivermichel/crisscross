@@ -37,4 +37,48 @@ describe Crisscross::Vertex do
       expect { vertex.remove_neighbor(m) }.to raise_error
     end
   end
+
+  describe '#sub_vertices' do
+    let(:n) { Object.new.extend(Crisscross::Vertex) }
+    let(:m) { Object.new.extend(Crisscross::Vertex) }
+    before do
+      vertex.map(n)
+      vertex.map(m)
+    end
+
+    it 'returns the list of mapped sub vertices' do
+      expect(vertex.sub_vertices).to include(n)
+      expect(vertex.sub_vertices).to include(m)
+    end
+  end
+
+  describe '#map' do
+    let(:n) { Object.new.extend(Crisscross::Vertex) }
+    let(:m) { Object.new.extend(Crisscross::Vertex) }
+    before { vertex.map(n) }
+
+    it 'maps a subvertex to a supervertex' do
+      vertex.map(m)
+      expect(vertex.sub_vertices).to include(m)
+    end
+
+    it 'raises an error when the specified vertex is alread mapped' do
+      expect { vertex.map(n) }.to raise_error
+    end
+  end
+
+  describe '#unmap' do
+    let(:n) { Object.new.extend(Crisscross::Vertex) }
+    let(:m) { Object.new.extend(Crisscross::Vertex) }
+    before { vertex.map(n) }
+
+    it 'unmaps a vertex' do
+      vertex.unmap(n)
+      expect(vertex.sub_vertices).to_not include(n)
+    end
+
+    it 'raises an error when unmapping a not mapped vertex' do
+      expect { vertex.unmap(m) }.to raise_error
+    end
+  end
 end
