@@ -50,5 +50,12 @@ describe Crisscross::Attributes do
         expect(obj.attributes).to include(:test2)
       end
     end
+
+    describe '#[]=' do
+      it 'sets an attribute' do
+        obj[:test2] = 5
+        expect(obj.attributes).to include(:test2)
+      end
+    end
   end
 end

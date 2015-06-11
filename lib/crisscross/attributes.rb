@@ -22,5 +22,9 @@ module Crisscross
     def [](key)
       get_attribute(key)
     end
+
+    def []=(key, value)
+      set_attribute(key, value)
+    end
   end
 end
